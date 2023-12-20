@@ -1,5 +1,6 @@
 package ru.netology.tests;
 
+import com.codeborne.selenide.Configuration;
 import ru.netology.data.DataHelper;
 import ru.netology.data.SQLHelper;
 import org.junit.jupiter.api.*;
@@ -13,7 +14,9 @@ public class PaymentPageTest {
 
     @BeforeEach
     public void openPage() {
+
         open(url);
+        Configuration.holdBrowserOpen = true;
     }
 
     @AfterEach
@@ -22,8 +25,8 @@ public class PaymentPageTest {
     }
 
     @Test
-    @DisplayName("1.1.")
-    void shouldBuyAllFieldValidApprovedCard() {
+    @DisplayName("1.1. Оплата тура валидной картой со статусом 'APPROVED'")
+    void testPayAllFieldsValidApprovedCard() {
         var startPage = new DashboardPage();
         var payment = startPage.openPaymentPage();
         payment.fillFields(DataHelper.getApprovedCard());

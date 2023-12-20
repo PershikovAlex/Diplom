@@ -11,11 +11,14 @@ public class DataHelper {
     private DataHelper() {
     }
     private static Faker faker = new Faker(new Locale("en"));
+
+
     private static String approvedCard() {
 
         return "4444444444444441";
     }
     private static String declinedCard() {
+
         return "4444444444444442";
     }
 
@@ -29,34 +32,34 @@ public class DataHelper {
     }
 
     // поле "Номер карты"
-    public static Card getNonExistCard() {
+    public static Card getInvalidCardNumberRandom() {
         return new Card(getRandomCardNumber(),getValidMonth(),getValidYear(),getValidHolder(),getValidCvv());
     }
 
-    public static Card getInvalidCardNumber() {
-        return new Card("4444 4444 4444 44",getValidMonth(),getValidYear(),getValidHolder(),getValidCvv());
+    public static Card get15DigitsCardNumber() {
+        return new Card("4444 4444 4444 444",getValidMonth(),getValidYear(),getValidHolder(),getValidCvv());
     }
-    public static Card getNonExistCardAllZero() {
-        return new Card("0000 0000 0000 0000",getValidMonth(),getValidYear(),getValidHolder(),getValidCvv());
+    public static Card get17DigitsCardNumber() {
+        return new Card("4444 4444 4444 4441 4",getValidMonth(),getValidYear(),getValidHolder(),getValidCvv());
     }
 
-    public static Card getEmptyFieldCardNumber() {
+    public static Card getEmptyCardNumber() {
         return new Card("",getValidMonth(),getValidYear(),getValidHolder(),getValidCvv());
     }
 
     //поле "Владелец"
 
-    public static Card getEmptyHolderCard() {
+    public static Card getEmptyHolder() {
         return new Card(approvedCard(), getValidMonth(), getValidYear(), "", getValidCvv());
     }
-    public static Card getInvalidHolderOneNameCard() {
+    public static Card getInvalidHolderOneName() {
         return new Card(approvedCard(), getValidMonth(), getValidYear(), "Andrew", getValidCvv());
     }
-    public static Card getInvalidHolderNumbersCard() {
-        return new Card(approvedCard(), getValidMonth(), getValidYear(), "111111", getValidCvv());
+    public static Card getInvalidHolderNumbers() {
+        return new Card(approvedCard(), getValidMonth(), getValidYear(), "Andrew1 Brown", getValidCvv());
     }
-    public static Card getInvalidHolderSymbolsCard() {
-        return new Card(approvedCard(), getValidMonth(), getValidYear(), "@@@@@@", getValidCvv());
+    public static Card getInvalidHolderSpecChar() {
+        return new Card(approvedCard(), getValidMonth(), getValidYear(), "@Andrew", getValidCvv());
     }
 
     //поле "Год"
@@ -66,12 +69,12 @@ public class DataHelper {
     public static Card getLastYear() {
         return new Card(approvedCard(), getValidMonth(), getPastYear(), getValidHolder(), getValidCvv());
     }
-    public static Card getNotComingYear() {
+    public static Card getInvalidYearPlus6() {
         return new Card(approvedCard(), getValidMonth(), getFutureYear(), getValidHolder(), getValidCvv());
     }
 
     // поле "Месяц"
-    public static Card getInvalidPastMonth() {
+    public static Card getInvalidMonth() {
         return new Card(approvedCard(), "11", getValidYear(), getValidHolder(), getValidCvv());
     }
     public static Card getEmptyMonth() {
@@ -80,28 +83,24 @@ public class DataHelper {
     public static Card getZeroMonthNowYear() {
         return new Card(approvedCard(), "00", getValidYear(), getValidHolder(), getValidCvv());
     }
-    public static Card getZeroMonthNextYear() {
-        return new Card(approvedCard(), "00", getNextYear(), getValidHolder(), getValidCvv());
-    }
-    public static Card getMonthOver12() {
-        return new Card(approvedCard(), "13", getValidYear(), getValidHolder(), getValidCvv());
-    }
-    public static Card getOneMonth() {
-        return new Card(approvedCard(), "7", getValidYear(), getValidHolder(), getValidCvv());
-    }
+
 
     //поле "CVC/CVV"
-    public static Card getEmptyCVC() {
+    public static Card getEmptyCVV() {
         return new Card(approvedCard(), getValidMonth(), getValidYear(), getValidHolder(), "");
     }
-    public static Card getOneNumberCVC() {
+    public static Card getOneNumberCVV() {
         return new Card(approvedCard(), getValidMonth(), getValidYear(), getValidHolder(), "1");
     }
-    public static Card getTwoNumberCVC() {
+    public static Card getTwoNumberCVV() {
         return new Card(approvedCard(), getValidMonth(), getValidYear(), getValidHolder(), "12");
     }
-    public static Card getZeroNumberCVC() {
-        return new Card(approvedCard(), getValidMonth(), getValidYear(), getValidHolder(), "000");
+    public static Card getInvalidCVVLiteralChar() {
+        return new Card(approvedCard(), getValidMonth(), getValidYear(), getValidHolder(), "12a");
+    }
+
+    public static Card getInvalidCVVSpecChar() {
+        return new Card(approvedCard(), getValidMonth(), getValidYear(), getValidHolder(), "12@");
     }
 
     //генераторы данных
@@ -117,10 +116,6 @@ public class DataHelper {
         String validYear = LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
         return validYear;
     }
-    public static String getNextYear() {
-        String nextYear = LocalDate.now().plusYears(1).format(DateTimeFormatter.ofPattern("yy"));
-        return nextYear;
-    }
     public static String getPastYear() {
         String pastYear = LocalDate.now().minusYears(1).format(DateTimeFormatter.ofPattern("yy"));
         return pastYear;
@@ -134,6 +129,6 @@ public class DataHelper {
     }
 
     public static String getValidCvv() {
-        return faker.number().digits(3);
+        return faker.numerify("###");
     }
 }
