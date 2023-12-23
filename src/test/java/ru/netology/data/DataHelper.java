@@ -1,7 +1,6 @@
 package ru.netology.data;
 
 import com.github.javafaker.Faker;
-import org.checkerframework.checker.units.qual.C;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -52,6 +51,10 @@ public class DataHelper {
         return new Card("4444 4444 4444 444a", getValidMonth(), getValidYear(), getValidHolder(), getValidCvv());
     }
 
+    public static Card getSpecCharCardNumber() {
+        return new Card("4444 4444 4444 444@", getValidMonth(), getValidYear(), getValidHolder(), getValidCvv());
+    }
+
     //поле "Владелец"
 
     public static Card getEmptyHolder() {
@@ -60,7 +63,7 @@ public class DataHelper {
     public static Card getInvalidHolderOneName() {
         return new Card(approvedCard(), getValidMonth(), getValidYear(), "Andrew", getValidCvv());
     }
-    public static Card getInvalidHolderNumbers() {
+    public static Card getInvalidHolderDigits() {
         return new Card(approvedCard(), getValidMonth(), getValidYear(), "Andrew1 Brown", getValidCvv());
     }
     public static Card getInvalidHolderSpecChar() {
@@ -78,18 +81,31 @@ public class DataHelper {
         return new Card(approvedCard(), getValidMonth(), getFutureYear(), getValidHolder(), getValidCvv());
     }
 
-    // поле "Месяц"
-    public static Card getInvalidMonth() {
-        return new Card(approvedCard(), "11", getValidYear(), getValidHolder(), getValidCvv());
+    public static Card getLiteralCharYear() {
+        return new Card(approvedCard(), getValidMonth(), "2a", getValidHolder(), getValidCvv());
     }
+
+    public static Card getSpecCharYear() {
+        return new Card(approvedCard(), getValidMonth(), "2@", getValidHolder(), getValidCvv());
+    }
+
+    // поле "Месяц"
     public static Card getEmptyMonth() {
         return new Card(approvedCard(), "", getValidYear(), getValidHolder(), getValidCvv());
     }
     public static Card getLastMonth() {
         return new Card(approvedCard(), getPastMonth(), getValidYear(), getValidHolder(), getValidCvv());
     }
-    public static Card getZeroMonthNowYear() {
+    public static Card getZeroMonth() {
         return new Card(approvedCard(), "00", getValidYear(), getValidHolder(), getValidCvv());
+    }
+
+    public static Card getLiteralCharMonth() {
+        return new Card(approvedCard(), "1a", getValidYear(), getValidHolder(), getValidCvv());
+    }
+
+    public static Card getSpecCharMonth() {
+        return new Card(approvedCard(), "1@", getValidYear(), getValidHolder(), getValidCvv());
     }
 
 

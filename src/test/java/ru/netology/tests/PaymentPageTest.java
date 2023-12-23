@@ -113,73 +113,109 @@ public class PaymentPageTest {
     @Test
     @DisplayName("2.8. Ввод номера карты со спецсимволом.")
     void testPayAllFieldsValidSpecCharCardNumber() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getSpecCharCardNumber());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.9. Ввод в поле МЕСЯЦ 00.")
     void testPayAllFieldsValidZeroMonth() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getZeroMonth());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.10. Оставить поле МЕСЯЦ пустым.")
     void testPayAllFieldsValidEmptyMonth() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getEmptyMonth());
+        payment.validationMessageEmptyField();
     }
 
     @Test
     @DisplayName("2.11. Ввод в поле МЕСЯЦ буквенного символа.")
     void testPayAllFieldsValidLiteralCharMonth() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getLiteralCharMonth());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.12. Ввод в поле месяц МЕСЯЦ спецсимвола.")
     void testPayAllFieldsValidSpecCharMonth() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getSpecCharMonth());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.13. Оставить поле ГОД пустым.")
     void testPayAllFieldsValidEmptyYear() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getEmptyYear());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.14. Ввод в поле ГОД буквенного символа.")
     void testPayAllFieldsValidLiteralCharYear() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getLiteralCharYear());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.15. Ввод в поле месяц ГОД спецсимвола.")
     void testPayAllFieldsValidSpecCharYear() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getSpecCharYear());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.16. Ввод в поле ГОД значения +6 лет от текущего года.")
     void testPayAllFieldsValidPlusSixYear() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getInvalidYearPlus6());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.17. Оставить поле ВЛАДЕЛЕЦ пустым.")
     void testPayAllFieldsValidEmptyHolder() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getEmptyHolder());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.18. Ввод в поле ВЛАДЕЛЕЦ цифр.")
     void testPayAllFieldsValidDigitsHolder() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getInvalidHolderDigits());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.19. Ввод в поле Владелец спецсимвола.")
     void testPayAllFieldsValidSpecCharHolder() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getInvalidHolderSpecChar());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
