@@ -34,7 +34,6 @@ public class PaymentPage {
 
     private SelenideElement cardExpiredMessageField = $(byText("Истёк срок действия карты"));
 
-
     public PaymentPage() {
         heading.shouldBe(visible);
     }
@@ -61,6 +60,7 @@ public class PaymentPage {
     }
 
     public void notificationSuccessIsVisible() {
+
         successNotification.shouldBe(visible, Duration.ofSeconds(15));
     }
 
@@ -68,15 +68,16 @@ public class PaymentPage {
         errorNotification.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void waitForValidationFieldMessage() {
+    public void validationMessageEmptyField() {
         validationMessageField.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void waitForWrongFormatMessage() {
+    public void validationMessageInvalidFormatField() {
         invalidFormatMessageField.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void waitForInvalidCharactersMessage() {
+
         invalidCharMessageField.shouldBe(visible, Duration.ofSeconds(15));
     }
 
@@ -84,7 +85,7 @@ public class PaymentPage {
         invalidExpirationMessageField.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void waitForCardExpiredMessage() {
+    public void validationMessageCardExpired() {
         cardExpiredMessageField.shouldBe(visible, Duration.ofSeconds(15));
     }
 

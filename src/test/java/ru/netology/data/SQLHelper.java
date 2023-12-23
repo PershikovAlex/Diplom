@@ -11,14 +11,14 @@ public class SQLHelper {
     private static QueryRunner runner = new QueryRunner();
 
     private static final String url = System.getProperty("db.url");
-    private static final String user = System.getProperty("db.username");
+    private static final String user = System.getProperty("db.user");
     private static final String password = System.getProperty("db.password");
 
     private SQLHelper(){};
 
     @SneakyThrows
     public static Connection getConn(){
-       return DriverManager.getConnection(url, "app", "pass");
+       return DriverManager.getConnection(url, user, password);
     }
 
     @SneakyThrows

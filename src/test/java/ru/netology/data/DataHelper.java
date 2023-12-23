@@ -1,6 +1,7 @@
 package ru.netology.data;
 
 import com.github.javafaker.Faker;
+import org.checkerframework.checker.units.qual.C;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -40,11 +41,15 @@ public class DataHelper {
         return new Card("4444 4444 4444 444",getValidMonth(),getValidYear(),getValidHolder(),getValidCvv());
     }
     public static Card get17DigitsCardNumber() {
-        return new Card("4444 4444 4444 4441 4",getValidMonth(),getValidYear(),getValidHolder(),getValidCvv());
+        return new Card("1234 1234 1234 1234 1",getValidMonth(),getValidYear(),getValidHolder(),getValidCvv());
     }
 
     public static Card getEmptyCardNumber() {
         return new Card("",getValidMonth(),getValidYear(),getValidHolder(),getValidCvv());
+    }
+
+    public static Card getLiteralCharCardNumber() {
+        return new Card("4444 4444 4444 444a", getValidMonth(), getValidYear(), getValidHolder(), getValidCvv());
     }
 
     //поле "Владелец"
@@ -80,6 +85,9 @@ public class DataHelper {
     public static Card getEmptyMonth() {
         return new Card(approvedCard(), "", getValidYear(), getValidHolder(), getValidCvv());
     }
+    public static Card getLastMonth() {
+        return new Card(approvedCard(), getPastMonth(), getValidYear(), getValidHolder(), getValidCvv());
+    }
     public static Card getZeroMonthNowYear() {
         return new Card(approvedCard(), "00", getValidYear(), getValidHolder(), getValidCvv());
     }
@@ -111,6 +119,9 @@ public class DataHelper {
     public static String getValidMonth() {
         String validMonth = LocalDate.now().format(DateTimeFormatter.ofPattern("MM"));
         return validMonth;
+    }
+    public static String getPastMonth() {
+        return LocalDate.now().minusMonths(1).format(DateTimeFormatter.ofPattern("MM"));
     }
     public static String getValidYear() {
         String validYear = LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
