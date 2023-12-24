@@ -31,7 +31,8 @@ public class PaymentPageTest {
         var payment = dashboarpagePage.openPaymentPage();
         payment.fillFields(DataHelper.getApprovedCard());
         payment.notificationSuccessIsVisible();
-        assertEquals("APPROVED", SQLHelper.getPaymentStatus());
+        Assertions.assertEquals("APPROVED", SQLHelper.getPaymentStatus());
+
     }
 
     @Test
@@ -221,54 +222,83 @@ public class PaymentPageTest {
     @Test
     @DisplayName("2.20. Ввод в поле ВЛАДЕЛЕЦ фамилии и имени без пробела.")
     void testPayAllFieldsValidWithoutSpaceHolder() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getInvalidHolderOneName());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.21. Поставить пробел перед вводом значения в поле ВЛАДЕЛЕЦ.")
     void testPayAllFieldsValidSpaceOverHolder() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getInvalidHolderSpaceOverHolder());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.22. Поставить пробел после ввода значения в поле ВЛАДЕЛЕЦ.")
     void testPayAllFieldsValidSpaceBehindHolder() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getInvalidHolderSpaceAfterHolder());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.23. Оставить поле CVC/CVV пустым.")
     void testPayAllFieldsValidEmptyCVV() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getEmptyCVV());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.24. Ввод в поле CVC/CVV 1 цифры.")
     void testPayAllFieldsValidOneDigitsCVV() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getOneNumberCVV());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.25. Ввод в поле CVC/CVV 2х цифр.")
     void testPayAllFieldsValidTwoDigitsCVV() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getTwoNumberCVV());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.26. Ввод в поле CVC/CVV буквенного символа.")
     void testPayAllFieldsValidLiteralCharCVV() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getInvalidCVVLiteralChar());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.27. Ввод в поле CVC/CVV спецсимвола.")
     void testPayAllFieldsValidSpecCharCVV() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.fillFields(DataHelper.getInvalidCVVSpecChar());
+        payment.validationMessageInvalidFormatField();
     }
 
     @Test
     @DisplayName("2.28. Оплата тура с пустыми полями.")
     void testPayAllFieldsEmpty() {
-
+        var dashboardpagePage = new DashboardPage();
+        var payment = dashboardpagePage.openPaymentPage();
+        payment.clearFields();
+        payment.clickContinueButton();
+        payment.validationMessageInvalidFormatField();
+        payment.validationMessageEmptyField();
     }
 }

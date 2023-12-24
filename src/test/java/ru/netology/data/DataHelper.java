@@ -70,6 +70,14 @@ public class DataHelper {
         return new Card(approvedCard(), getValidMonth(), getValidYear(), "@Andrew", getValidCvv());
     }
 
+    public static Card getInvalidHolderSpaceOverHolder() {
+        return new Card(approvedCard(), getValidMonth(), getValidYear(), " " + getValidHolder(), getValidCvv());
+    }
+
+    public static Card getInvalidHolderSpaceAfterHolder() {
+        return new Card(approvedCard(), getValidMonth(), getValidYear(), getValidHolder() + " ", getValidCvv());
+    }
+
     //поле "Год"
     public static Card getEmptyYear() {
         return new Card(approvedCard(), getValidMonth(), "", getValidHolder(), getValidCvv());

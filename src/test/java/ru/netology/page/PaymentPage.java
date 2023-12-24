@@ -59,6 +59,10 @@ public class PaymentPage {
         return new PaymentPage();
     }
 
+    public void clickContinueButton() {
+        continueButton.click();
+    }
+
     public void notificationSuccessIsVisible() {
 
         successNotification.shouldBe(visible, Duration.ofSeconds(15));
