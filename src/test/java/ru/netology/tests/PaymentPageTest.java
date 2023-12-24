@@ -61,7 +61,7 @@ public class PaymentPageTest {
         var dashboardpagePage = new DashboardPage();
         var payment = dashboardpagePage.openPaymentPage();
         payment.fillFields(DataHelper.getLastMonth());
-        payment.validationMessageCardExpired();
+        payment.validationMessageInvalidExpiration();
         assertEquals(null, SQLHelper.getPaymentStatus());
     }
 
