@@ -83,5 +83,4 @@ public class PaymentPage {
     public void validationMessageCardExpiredYear() {
         cardExpiredMessageField.shouldBe(visible, Duration.ofSeconds(10));
     }
-
 }
