@@ -18,20 +18,13 @@ public class PaymentPage {
     private SelenideElement yearField = $$(".input__inner").findBy(text("Год")).$(".input__control");
     private SelenideElement holderField = $(byText("Владелец")).parent().$(".input__control");
     private SelenideElement cvvField = $("[placeholder='999']");
-
     private SelenideElement continueButton = $$("button").find(exactText("Продолжить"));
-
     private SelenideElement successNotification = $(".notification_status_ok");
     private SelenideElement errorNotification = $(".notification_status_error");
-
     private SelenideElement validationMessageField = $(byText("Поле обязательно для заполнения"));
-
     private SelenideElement invalidFormatMessageField = $(byText("Неверный формат"));
-
     private SelenideElement invalidCharMessageField = $(byText("Поле содержит недопустимые символы"));
-
     private SelenideElement invalidExpirationMessageField = $(byText("Неверно указан срок действия карты"));
-
     private SelenideElement cardExpiredMessageField = $(byText("Истёк срок действия карты"));
 
     public PaymentPage() {
@@ -63,34 +56,32 @@ public class PaymentPage {
         continueButton.click();
     }
 
-    public void notificationSuccessIsVisible() {
-
+    public void notificationSuccess() {
         successNotification.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void notificationErrorIsVisible() {
+    public void notificationError() {
         errorNotification.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void validationMessageEmptyField() {
-        validationMessageField.shouldBe(visible, Duration.ofSeconds(15));
+        validationMessageField.shouldBe(visible, Duration.ofSeconds(10));
     }
 
     public void validationMessageInvalidFormatField() {
-        invalidFormatMessageField.shouldBe(visible, Duration.ofSeconds(15));
+        invalidFormatMessageField.shouldBe(visible, Duration.ofSeconds(10));
     }
 
-    public void waitForInvalidCharactersMessage() {
-
+    public void validationMessageInvalidChar() {
         invalidCharMessageField.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void validationMessageInvalidExpiration() {
-        invalidExpirationMessageField.shouldBe(visible, Duration.ofSeconds(15));
+    public void validationMessageCardExpiredMonth() {
+        invalidExpirationMessageField.shouldBe(visible, Duration.ofSeconds(10));
     }
 
-    public void validationMessageCardExpired() {
-        cardExpiredMessageField.shouldBe(visible, Duration.ofSeconds(15));
+    public void validationMessageCardExpiredYear() {
+        cardExpiredMessageField.shouldBe(visible, Duration.ofSeconds(10));
     }
 
 }
