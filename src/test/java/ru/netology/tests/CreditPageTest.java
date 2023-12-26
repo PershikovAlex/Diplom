@@ -33,7 +33,7 @@ public class CreditPageTest {
         var credit = dashboardPage.openCreditPage();
         credit.fillFields(DataHelper.getApprovedCard());
         credit.notificationSuccess();
-        assertEquals("APPROVED", SQLHelper.getPaymentStatus());
+        assertEquals("APPROVED", SQLHelper.getCreditStatus());
     }
 
     @Test
@@ -43,7 +43,7 @@ public class CreditPageTest {
         var credit = dashboardPage.openCreditPage();
         credit.fillFields(DataHelper.getDeclinedCard());
         credit.notificationError();
-        assertEquals("DECLINED", SQLHelper.getPaymentStatus());
+        assertEquals("DECLINED", SQLHelper.getCreditStatus());
     }
 
     @Test
@@ -53,7 +53,7 @@ public class CreditPageTest {
         var credit = dashboardPage.openCreditPage();
         credit.fillFields(DataHelper.getInvalidCardNumberRandom());
         credit.notificationError();
-        assertEquals(null, SQLHelper.getPaymentStatus());
+        assertEquals(null, SQLHelper.getCreditStatus());
     }
 
     @Test

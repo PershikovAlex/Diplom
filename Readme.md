@@ -11,11 +11,25 @@
 ## Установка и запуск ##
   1. Склонировать проект на свой ПК командой:  
      ```
-      `git clone`
+     git clone
      ```   
-  2. Открыть проект в IntelliJ IDEA  
-  3. Запустить контейнеры в терминале командой:  
+  2. Запустить Docker Desktop.
+  3. Открыть проект в IntelliJ IDEA  
+  4. Запустить контейнеры в терминале командой:  
      ```
-      `docker-compose up`
+     docker-compose up
      ```
-  4. 
+  5. Зупустить SUT командой:
+     * для MySQL
+       ```
+       java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar aqa-shop.jar
+       ```
+     * для PostgreSQL
+       ```
+       java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar aqa-shop.jar
+       ```
+  6. Запустить авто-тесты командой:
+     * для MySQL
+     ```
+       ./gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"
+     ```

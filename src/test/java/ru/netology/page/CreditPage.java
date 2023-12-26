@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class CreditPage {
-    private SelenideElement heading = $$("h3").find(text("Оплата по карте"));
+    private SelenideElement heading = $$("h3").find(text("Кредит по данным карты"));
     private SelenideElement cardNumberField =  $$(".input__inner").findBy(text("Номер карты")).$(".input__control");
     private SelenideElement monthField = $$(".input__inner").findBy(text("Месяц")).$(".input__control");
     private SelenideElement yearField = $$(".input__inner").findBy(text("Год")).$(".input__control");
