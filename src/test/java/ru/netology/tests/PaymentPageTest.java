@@ -28,7 +28,6 @@ public class PaymentPageTest {
     public void openPage() {
 
         open(url);
-        Configuration.holdBrowserOpen = true;
     }
 
     @AfterEach

@@ -113,7 +113,7 @@ public class DataHelper {
         return new Card(approvedCard(), getValidMonth(), getValidYear(), "Andrew1 Brown", getValidCvv());
     }
     public static Card getInvalidHolderSpecChar() {
-        return new Card(approvedCard(), getValidMonth(), getValidYear(), "@Andrew", getValidCvv());
+        return new Card(approvedCard(), getValidMonth(), getValidYear(), "Andrew Brown@", getValidCvv());
     }
     public static Card getInvalidHolderSpaceOverHolder() {
         return new Card(approvedCard(), getValidMonth(), getValidYear(), " " + getValidHolder(), getValidCvv());
