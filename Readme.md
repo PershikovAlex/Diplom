@@ -30,6 +30,14 @@
        ```
   6. Запустить авто-тесты командой:
      * для MySQL
-     ```
+       ```
        ./gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"
-     ```
+       ```
+     * для PostgreSQL
+       ```
+       ./gradlew clean test "-Ddb.url=jdbc:postgresql://localhost:5432/app"
+  7. Для формирования отчета ввести команду:
+       ```
+       ./gradlew allureServe
+       ```
+  8. Завершить работу приложения сочетанием клавиш `CTRL+C` 
