@@ -1,6 +1,5 @@
 package ru.netology.tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import ru.netology.data.DataHelper;
@@ -71,7 +70,7 @@ public class PaymentPageTest {
         var dashboardPage = new DashboardPage();
         var payment = dashboardPage.openPaymentPage();
         payment.fillFields(DataHelper.getLastMonth());
-        payment.validationMessageCardExpiredMonth();
+        payment.validationMessageInvalidExpirationMessage();
     }
 
     @Test
@@ -80,7 +79,7 @@ public class PaymentPageTest {
         var dashboardPage = new DashboardPage();
         var payment = dashboardPage.openPaymentPage();
         payment.fillFields(DataHelper.getLastYear());
-        payment.validationMessageCardExpiredYear();
+        payment.validationMessageCardExpired();
     }
 
     @Test
@@ -134,7 +133,7 @@ public class PaymentPageTest {
         var dashboardPage = new DashboardPage();
         var payment = dashboardPage.openPaymentPage();
         payment.fillFields(DataHelper.getZeroMonth());
-        payment.validationMessageInvalidFormatField();
+        payment.validationMessageInvalidExpirationMessage();
     }
 
     @Test
@@ -197,7 +196,7 @@ public class PaymentPageTest {
         var dashboardPage = new DashboardPage();
         var payment = dashboardPage.openPaymentPage();
         payment.fillFields(DataHelper.getInvalidYearPlus6());
-        payment.validationMessageInvalidFormatField();
+        payment.validationMessageInvalidExpirationMessage();
     }
 
     @Test
