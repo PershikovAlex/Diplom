@@ -70,7 +70,7 @@ public class PaymentPageTest {
         var dashboardPage = new DashboardPage();
         var payment = dashboardPage.openPaymentPage();
         payment.fillFields(DataHelper.getLastMonth());
-        payment.validationMessageInvalidExpirationMessage();
+        payment.validationMessageInvalidExpiration();
     }
 
     @Test
@@ -133,7 +133,7 @@ public class PaymentPageTest {
         var dashboardPage = new DashboardPage();
         var payment = dashboardPage.openPaymentPage();
         payment.fillFields(DataHelper.getZeroMonth());
-        payment.validationMessageInvalidExpirationMessage();
+        payment.validationMessageInvalidExpiration();
     }
 
     @Test
@@ -196,7 +196,7 @@ public class PaymentPageTest {
         var dashboardPage = new DashboardPage();
         var payment = dashboardPage.openPaymentPage();
         payment.fillFields(DataHelper.getInvalidYearPlus6());
-        payment.validationMessageInvalidExpirationMessage();
+        payment.validationMessageInvalidExpiration();
     }
 
     @Test

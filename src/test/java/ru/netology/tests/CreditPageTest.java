@@ -1,6 +1,5 @@
 package ru.netology.tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
@@ -71,7 +70,7 @@ public class CreditPageTest {
         var dashboardPage = new DashboardPage();
         var credit = dashboardPage.openCreditPage();
         credit.fillFields(DataHelper.getLastMonth());
-        credit.validationMessageCardExpiredMonth();
+        credit.validationMessageInvalidExpiration();
     }
 
     @Test
@@ -80,7 +79,7 @@ public class CreditPageTest {
         var dashboardPage = new DashboardPage();
         var credit = dashboardPage.openCreditPage();
         credit.fillFields(DataHelper.getLastYear());
-        credit.validationMessageCardExpiredYear();
+        credit.validationMessageCardExpired();
     }
 
     @Test
@@ -134,7 +133,7 @@ public class CreditPageTest {
         var dashboardPage = new DashboardPage();
         var credit = dashboardPage.openCreditPage();
         credit.fillFields(DataHelper.getZeroMonth());
-        credit.validationMessageInvalidFormatField();
+        credit.validationMessageInvalidExpiration();
     }
 
     @Test
@@ -197,7 +196,7 @@ public class CreditPageTest {
         var dashboardPage = new DashboardPage();
         var credit = dashboardPage.openCreditPage();
         credit.fillFields(DataHelper.getInvalidYearPlus6());
-        credit.validationMessageInvalidFormatField();
+        credit.validationMessageInvalidExpiration();
     }
 
     @Test

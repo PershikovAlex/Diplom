@@ -76,7 +76,7 @@ public class PaymentPage {
         invalidCharMessageField.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void validationMessageInvalidExpirationMessage() {
+    public void validationMessageInvalidExpiration() {
         invalidExpirationMessageField.shouldBe(visible, Duration.ofSeconds(10));
     }
 

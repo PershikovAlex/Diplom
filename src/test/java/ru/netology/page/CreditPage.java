@@ -77,11 +77,11 @@ public class CreditPage {
         invalidCharMessageField.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void validationMessageCardExpiredMonth() {
+    public void validationMessageInvalidExpiration() {
         invalidExpirationMessageField.shouldBe(visible, Duration.ofSeconds(10));
     }
 
-    public void validationMessageCardExpiredYear() {
+    public void validationMessageCardExpired() {
         cardExpiredMessageField.shouldBe(visible, Duration.ofSeconds(10));
     }
 }
